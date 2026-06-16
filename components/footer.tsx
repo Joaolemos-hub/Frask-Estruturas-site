@@ -32,7 +32,7 @@ export default function Footer() {
                 alt="Frask Estruturas"
                 width={220}
                 height={88}
-                className="h-16 w-auto object-contain md:h-[4.5rem]"
+                className="h-16 w-auto object-contain mix-blend-screen md:h-[4.5rem]"
                 sizes="220px"
               />
             </Link>

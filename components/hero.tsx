@@ -61,8 +61,8 @@ export default function Hero() {
           
           {/* Stats */}
           <div className="grid grid-cols-2 gap-6">
-            <div className="p-8 border border-neutral-200 border-t-frask-red border-t-2 bg-white">
-              <p className="font-serif text-5xl md:text-6xl font-medium text-frask-red mb-2">15+</p>
+            <div className="p-8 border border-neutral-200 bg-white">
+              <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">15+</p>
               <p className="text-sm text-neutral-500 tracking-wide">Anos de Experiência</p>
             </div>
             <div className="p-8 border border-neutral-200 bg-white">

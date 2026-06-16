@@ -1,8 +1,12 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
+import useEmblaCarousel from 'embla-carousel-react'
 import ClientesTicker from '@/components/clientes-ticker'
+
+const CARD_WIDTH = 350
+const CARD_GAP = 24
 
 const projetos = [
   {
@@ -81,43 +85,137 @@ const projetos = [
   },
 ]
 
+type Projeto = (typeof projetos)[number]
+
+function ProjetoCard({
+  projeto,
+  isHovered,
+  isDimmed,
+  onHover,
+  dragEnabled,
+}: {
+  projeto: Projeto
+  isHovered: boolean
+  isDimmed: boolean
+  onHover: (id: number | null) => void
+  dragEnabled: boolean
+}) {
+  return (
+    <article
+      className="relative h-[450px] w-full overflow-hidden rounded-2xl select-none transition-[opacity,transform,z-index] duration-300 ease-out"
+      style={{
+        opacity: isDimmed ? 0.5 : 1,
+        transform: isHovered ? 'scale(1.06) translateY(-6px)' : 'scale(1) translateY(0)',
+        zIndex: isHovered ? 20 : 1,
+      }}
+      onMouseEnter={() => dragEnabled && onHover(projeto.id)}
+      onMouseLeave={() => dragEnabled && onHover(null)}
+    >
+      <div className="relative h-full w-full">
+        <Image
+          src={projeto.imagem}
+          alt={`${projeto.marca} - ${projeto.evento}`}
+          fill
+          draggable={false}
+          className="pointer-events-none object-cover transition-all duration-500 ease-out"
+          style={{
+            transform: isHovered ? 'scale(1.15)' : 'scale(1)',
+            filter: isHovered ? 'brightness(1.1) contrast(1.06) saturate(1.08)' : 'brightness(0.88)',
+          }}
+          sizes={`${CARD_WIDTH}px`}
+        />
+
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10 transition-opacity duration-500"
+          style={{ opacity: isHovered ? 0.55 : 1 }}
+        />
+
+        <div className="absolute inset-0 flex flex-col justify-end p-6">
+          <div
+            className="mb-4 inline-flex self-start rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white"
+            style={{ backgroundColor: projeto.cor }}
+          >
+            {projeto.marca}
+          </div>
+
+          <h3
+            className="mb-2 text-2xl font-bold text-white transition-transform duration-300"
+            style={{ transform: isHovered ? 'translateY(0)' : 'translateY(8px)' }}
+          >
+            {projeto.evento}
+          </h3>
+
+          <p
+            className="mb-4 text-sm text-white/90 transition-all duration-500"
+            style={{
+              opacity: isHovered ? 1 : 0,
+              transform: isHovered ? 'translateY(0)' : 'translateY(10px)',
+            }}
+          >
+            {projeto.descricao}
+          </p>
+
+          <div
+            className="flex flex-wrap gap-4 transition-all duration-500"
+            style={{
+              opacity: isHovered ? 1 : 0,
+              transform: isHovered ? 'translateY(0)' : 'translateY(20px)',
+            }}
+          >
+            {projeto.numeros.map((num, idx) => (
+              <div key={idx} className="text-center">
+                <div className="text-xl font-bold text-white">{num.valor}</div>
+                <div className="text-xs uppercase tracking-wider text-white/70">{num.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {isHovered && (
+          <div
+            className="pointer-events-none absolute inset-0 rounded-2xl ring-2 ring-white/25 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.65)]"
+            aria-hidden
+          />
+        )}
+      </div>
+    </article>
+  )
+}
+
 export default function MarcasCarrossel() {
   const [hoveredId, setHoveredId] = useState<number | null>(null)
-  const scrollRef = useRef<HTMLDivElement>(null)
-  const [canScrollLeft, setCanScrollLeft] = useState(false)
-  const [canScrollRight, setCanScrollRight] = useState(true)
+  const [isDragging, setIsDragging] = useState(false)
 
-  const checkScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
-      setCanScrollLeft(scrollLeft > 0)
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10)
-    }
-  }
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'start',
+    dragFree: false,
+    containScroll: false,
+  })
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi])
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi])
 
   useEffect(() => {
-    checkScroll()
-    const ref = scrollRef.current
-    if (ref) {
-      ref.addEventListener('scroll', checkScroll)
-      return () => ref.removeEventListener('scroll', checkScroll)
-    }
-  }, [])
+    if (!emblaApi) return
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const scrollAmount = 400
-      scrollRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      })
+    const onPointerDown = () => setIsDragging(true)
+    const onPointerUp = () => setIsDragging(false)
+
+    emblaApi.on('pointerDown', onPointerDown)
+    emblaApi.on('pointerUp', onPointerUp)
+
+    return () => {
+      emblaApi.off('pointerDown', onPointerDown)
+      emblaApi.off('pointerUp', onPointerUp)
     }
-  }
+  }, [emblaApi])
+
+  const dragEnabled = !isDragging
 
   return (
     <section className="py-24 bg-[#1a1a1a]" id="marcas">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <p className="text-sm uppercase tracking-[0.2em] text-frask-gray mb-4">
             <span className="text-frask-red">◆</span> Confiança Comprovada
@@ -131,150 +229,68 @@ export default function MarcasCarrossel() {
           </p>
         </div>
 
-        {/* Carrossel Container */}
         <div className="relative">
-          {/* Botão Esquerda */}
-          {canScrollLeft && (
-            <button
-              onClick={() => scroll('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 -ml-6"
-              aria-label="Anterior"
-            >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-          )}
-
-          {/* Botão Direita */}
-          {canScrollRight && (
-            <button
-              onClick={() => scroll('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300 -mr-6"
-              aria-label="Próximo"
-            >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          )}
-
-          {/* Gradientes de fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#1a1a1a] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#1a1a1a] to-transparent z-10 pointer-events-none" />
-
-          {/* Carrossel */}
-          <div
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide py-8 px-4"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          <button
+            type="button"
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 z-20 -ml-6 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
+            aria-label="Marca anterior"
           >
-            {projetos.map((projeto) => (
-              <div
-                key={projeto.id}
-                className="relative flex-shrink-0 w-[350px] h-[450px] rounded-2xl overflow-hidden cursor-pointer group"
-                onMouseEnter={() => setHoveredId(projeto.id)}
-                onMouseLeave={() => setHoveredId(null)}
-                style={{
-                  transform: hoveredId === projeto.id 
-                    ? 'scale(1.08) translateY(-10px)' 
-                    : hoveredId !== null 
-                      ? 'scale(0.95)' 
-                      : 'scale(1)',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  zIndex: hoveredId === projeto.id ? 30 : 1,
-                }}
-              >
-                {/* Imagem de fundo */}
-                <Image
-                  src={projeto.imagem}
-                  alt={`${projeto.marca} - ${projeto.evento}`}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                
-                {/* Overlay gradiente */}
-                <div 
-                  className="absolute inset-0 transition-opacity duration-500"
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 z-20 -mr-6 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20"
+            aria-label="Próxima marca"
+          >
+            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-[#1a1a1a] to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-[#1a1a1a] to-transparent" />
+
+          <div
+            ref={emblaRef}
+            className={`overflow-hidden py-8 px-4 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+          >
+            <div className="flex" style={{ marginLeft: -CARD_GAP }}>
+              {projetos.map((projeto) => (
+                <div
+                  key={projeto.id}
+                  className="min-w-0 shrink-0 grow-0"
                   style={{
-                    background: hoveredId === projeto.id
-                      ? `linear-gradient(to top, ${projeto.cor}ee 0%, ${projeto.cor}88 40%, transparent 100%)`
-                      : 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)'
+                    flex: `0 0 ${CARD_WIDTH}px`,
+                    paddingLeft: CARD_GAP,
                   }}
-                />
-
-                {/* Conteúdo */}
-                <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                  {/* Tag da marca */}
-                  <div 
-                    className="inline-flex self-start px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 transition-all duration-300"
-                    style={{
-                      backgroundColor: hoveredId === projeto.id ? 'white' : projeto.cor,
-                      color: hoveredId === projeto.id ? projeto.cor : 'white',
-                    }}
-                  >
-                    {projeto.marca}
-                  </div>
-
-                  {/* Título do evento */}
-                  <h3 className="text-2xl font-bold text-white mb-2 transition-transform duration-300 group-hover:translate-y-0 translate-y-2">
-                    {projeto.evento}
-                  </h3>
-
-                  {/* Descrição - aparece no hover */}
-                  <p 
-                    className="text-white/90 text-sm mb-4 transition-all duration-500"
-                    style={{
-                      opacity: hoveredId === projeto.id ? 1 : 0,
-                      transform: hoveredId === projeto.id ? 'translateY(0)' : 'translateY(10px)',
-                    }}
-                  >
-                    {projeto.descricao}
-                  </p>
-
-                  {/* Números/Stats - aparecem no hover */}
-                  <div 
-                    className="flex flex-wrap gap-4 transition-all duration-500"
-                    style={{
-                      opacity: hoveredId === projeto.id ? 1 : 0,
-                      transform: hoveredId === projeto.id ? 'translateY(0)' : 'translateY(20px)',
-                    }}
-                  >
-                    {projeto.numeros.map((num, idx) => (
-                      <div key={idx} className="text-center">
-                        <div className="text-xl font-bold text-white">{num.valor}</div>
-                        <div className="text-xs text-white/70 uppercase tracking-wider">{num.label}</div>
-                      </div>
-                    ))}
-                  </div>
+                >
+                  <ProjetoCard
+                    projeto={projeto}
+                    isHovered={hoveredId === projeto.id}
+                    isDimmed={hoveredId !== null && hoveredId !== projeto.id}
+                    onHover={setHoveredId}
+                    dragEnabled={dragEnabled}
+                  />
                 </div>
-
-                {/* Borda decorativa no hover */}
-                <div 
-                  className="absolute inset-0 rounded-2xl transition-all duration-500 pointer-events-none"
-                  style={{
-                    boxShadow: hoveredId === projeto.id 
-                      ? `0 25px 50px -12px ${projeto.cor}66, inset 0 0 0 2px ${projeto.cor}` 
-                      : 'none',
-                  }}
-                />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Indicador de scroll */}
-        <div className="flex justify-center mt-8 gap-2">
-          <span className="text-neutral-500 text-sm flex items-center gap-2">
-            <svg className="w-4 h-4 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-            </svg>
-            Arraste para ver mais
-            <svg className="w-4 h-4 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </span>
-        </div>
+        <p className="mt-4 flex items-center justify-center gap-2 text-sm text-neutral-500">
+          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          Arraste para ver mais
+          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </p>
 
         <ClientesTicker />
       </div>
