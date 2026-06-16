@@ -1,3 +1,6 @@
+import SectionBackground from '@/components/section-background'
+import { siteBackgrounds } from '@/lib/site-backgrounds'
+
 export default function Sobre() {
   const pilares = [
     {
@@ -19,8 +22,9 @@ export default function Sobre() {
   ]
 
   return (
-    <section id="sobre" className="py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="sobre" className="relative overflow-hidden bg-white py-32">
+      <SectionBackground {...siteBackgrounds.sobre} />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mb-20">
           <p className="text-sm font-medium tracking-[0.2em] text-frask-gray uppercase mb-4">

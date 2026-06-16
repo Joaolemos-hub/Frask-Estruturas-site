@@ -1,3 +1,6 @@
+import SectionBackground from '@/components/section-background'
+import { siteBackgrounds } from '@/lib/site-backgrounds'
+
 const solucoes = [
   {
     title: "Palcos & Stages",
@@ -27,8 +30,9 @@ const solucoes = [
 
 export default function Solucoes() {
   return (
-    <section id="solucoes" className="py-32 bg-[#F5F5F0]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="solucoes" className="relative overflow-hidden bg-[#F5F5F0] py-32">
+      <SectionBackground {...siteBackgrounds.solucoes} />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
           <div className="max-w-2xl">
@@ -51,7 +55,7 @@ export default function Solucoes() {
           {solucoes.map((s, i) => (
             <div
               key={i}
-              className="bg-white p-10 group hover:bg-neutral-50 transition-colors border-t-2 border-t-transparent hover:border-t-frask-red"
+              className="bg-white/90 p-10 backdrop-blur-sm group hover:bg-white transition-colors border-t-2 border-t-transparent hover:border-t-frask-red"
             >
               <span className="text-sm font-medium text-neutral-300 mb-6 block">
                 0{i + 1}

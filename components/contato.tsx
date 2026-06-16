@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import SectionBackground from '@/components/section-background'
+import { siteBackgrounds } from '@/lib/site-backgrounds'
 
 export default function Contato() {
   const [form, setForm] = useState({
@@ -14,8 +16,9 @@ export default function Contato() {
   })
 
   return (
-    <section id="contato" className="py-32 bg-[#F5F5F0]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="contato" className="relative overflow-hidden bg-[#F5F5F0] py-32">
+      <SectionBackground {...siteBackgrounds.contato} />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-20">
           {/* Left - Info */}
           <div>

@@ -1,3 +1,6 @@
+import SectionBackground from '@/components/section-background'
+import { siteBackgrounds } from '@/lib/site-backgrounds'
+
 const projetos = [
   {
     cliente: "Red Bull",
@@ -32,8 +35,9 @@ const projetos = [
 
 export default function Projetos() {
   return (
-    <section id="projetos" className="py-32 bg-neutral-900">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="projetos" className="relative overflow-hidden bg-neutral-900 py-32">
+      <SectionBackground {...siteBackgrounds.projetos} />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
           <div>
