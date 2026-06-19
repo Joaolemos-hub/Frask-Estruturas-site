@@ -43,20 +43,21 @@ export default function Sobre() {
         </div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 items-stretch mb-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-start mb-20">
           {/* Left - Feature Image */}
-          <div className="relative min-h-[400px] lg:min-h-full overflow-hidden">
+          <div className="relative w-full overflow-hidden">
             <Image
               src="/images/confianca-grande-escala.png"
               alt="Equipe técnica da Frask montando estrutura metálica de grande porte com segurança"
-              fill
-              className="object-cover object-center"
+              width={470}
+              height={568}
+              className="w-full h-auto"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
 
           {/* Right - Quote + Text */}
-          <div className="flex flex-col justify-center">
+          <div className="pt-4">
             <div className="border-l-2 border-frask-red pl-8 mb-10">
               <blockquote className="font-serif text-2xl md:text-3xl text-neutral-900 leading-relaxed mb-6">
                 &ldquo;Nosso diferencial vai além da estrutura — é a expertise, 
