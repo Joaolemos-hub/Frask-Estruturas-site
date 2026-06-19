@@ -4,14 +4,14 @@ import GridPattern from '@/components/grid-pattern'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-[#F5F5F0] overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-[#F5F5F0] overflow-hidden pb-24">
       <div className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full bg-frask-red/10 blur-3xl" aria-hidden />
       <div className="pointer-events-none absolute bottom-32 -left-16 h-64 w-64 rounded-full bg-frask-gray/10 blur-3xl" aria-hidden />
 
       {/* Background Pattern - Subtle Grid */}
       <GridPattern />
       
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-20 w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Text Content */}
           <div className="max-w-xl">
