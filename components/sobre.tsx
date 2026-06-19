@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import SectionBackground from '@/components/section-background'
+import GridPattern from '@/components/grid-pattern'
 import { siteBackgrounds } from '@/lib/site-backgrounds'
 
 export default function Sobre() {
@@ -25,6 +26,7 @@ export default function Sobre() {
   return (
     <section id="sobre" className="relative overflow-hidden bg-white py-32">
       <SectionBackground {...siteBackgrounds.sobre} />
+      <GridPattern />
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mb-20">

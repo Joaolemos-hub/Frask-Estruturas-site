@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import SectionBackground from '@/components/section-background'
+import GridPattern from '@/components/grid-pattern'
 import { siteBackgrounds } from '@/lib/site-backgrounds'
 
 const solucoes = [
@@ -33,6 +34,7 @@ export default function Solucoes() {
   return (
     <section id="solucoes" className="relative overflow-hidden bg-[#F5F5F0] py-32">
       <SectionBackground {...siteBackgrounds.solucoes} />
+      <GridPattern />
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">

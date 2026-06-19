@@ -9,16 +9,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute bottom-32 -left-16 h-64 w-64 rounded-full bg-frask-gray/10 blur-3xl" aria-hidden />
 
       {/* Background Pattern - Subtle Grid */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #000 1px, transparent 1px),
-            linear-gradient(to bottom, #000 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px'
-        }}
-      />
+      <GridPattern />
       
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
