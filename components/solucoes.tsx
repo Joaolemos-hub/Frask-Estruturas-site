@@ -65,11 +65,11 @@ export default function Solucoes() {
         </div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-neutral-200">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-0 border border-neutral-200">
           {solucoes.map((s, i) => (
             <div
               key={i}
-              className="bg-white p-10 group hover:bg-white transition-colors border-t-2 border-t-transparent hover:border-t-frask-red"
+              className="bg-white p-10 group hover:bg-white transition-colors border-r border-b border-neutral-200 border-t-4 border-t-frask-red"
             >
               <span className="text-sm font-medium text-neutral-300 mb-6 block">
                 0{i + 1}
