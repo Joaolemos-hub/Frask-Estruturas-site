@@ -45,12 +45,12 @@ export default function Sobre() {
         {/* Content Grid */}
         <div className="grid lg:grid-cols-2 gap-16 items-stretch mb-20">
           {/* Left - Feature Image */}
-          <div className="relative min-h-[360px] lg:min-h-full overflow-hidden">
+          <div className="relative min-h-[400px] lg:min-h-full overflow-hidden">
             <Image
               src="/images/confianca-grande-escala.png"
               alt="Equipe técnica da Frask montando estrutura metálica de grande porte com segurança"
               fill
-              className="object-cover"
+              className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>

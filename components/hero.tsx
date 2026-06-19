@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Hero() {
@@ -19,7 +20,7 @@ export default function Hero() {
       />
       
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Text Content */}
           <div className="max-w-xl">
             <p className="text-sm font-medium tracking-[0.2em] text-frask-gray uppercase mb-6">
@@ -59,24 +60,35 @@ export default function Hero() {
             </div>
           </div>
           
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-6">
-            <div className="p-8 border border-neutral-200 bg-white">
-              <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">15+</p>
-              <p className="text-sm text-neutral-500 tracking-wide">Anos de Experiência</p>
-            </div>
-            <div className="p-8 border border-neutral-200 bg-white">
-              <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">500+</p>
-              <p className="text-sm text-neutral-500 tracking-wide">Projetos Realizados</p>
-            </div>
-            <div className="p-8 border border-neutral-200 bg-white">
-              <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">100%</p>
-              <p className="text-sm text-neutral-500 tracking-wide">Segurança Certificada</p>
-            </div>
-            <div className="p-8 border border-neutral-200 bg-white">
-              <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">24h</p>
-              <p className="text-sm text-neutral-500 tracking-wide">Suporte Técnico</p>
-            </div>
+          {/* Feature Image */}
+          <div className="relative aspect-square overflow-hidden">
+            <Image
+              src="/bg/palco-show-luzes.png"
+              alt="Palco de show com treliças, telões LED e iluminação de alta produção"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="p-8 border border-neutral-200 bg-white">
+            <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">15+</p>
+            <p className="text-sm text-neutral-500 tracking-wide">Anos de Experiência</p>
+          </div>
+          <div className="p-8 border border-neutral-200 bg-white">
+            <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">500+</p>
+            <p className="text-sm text-neutral-500 tracking-wide">Projetos Realizados</p>
+          </div>
+          <div className="p-8 border border-neutral-200 bg-white">
+            <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">100%</p>
+            <p className="text-sm text-neutral-500 tracking-wide">Segurança Certificada</p>
+          </div>
+          <div className="p-8 border border-neutral-200 bg-white">
+            <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">24h</p>
+            <p className="text-sm text-neutral-500 tracking-wide">Suporte Técnico</p>
           </div>
         </div>
       </div>
