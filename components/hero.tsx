@@ -35,7 +35,7 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="#projetos"
-                className="inline-flex items-center justify-center px-8 py-4 border border-neutral-300 text-frask-gray-dark text-sm font-medium tracking-wide hover:border-frask-red hover:text-frask-red transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 bg-neutral-900 text-white text-sm font-medium tracking-wide hover:bg-neutral-800 transition-colors"
               >
                 Ver Projetos
               </Link>
