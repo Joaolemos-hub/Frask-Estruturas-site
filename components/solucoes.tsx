@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import SectionBackground from '@/components/section-background'
 import { siteBackgrounds } from '@/lib/site-backgrounds'
 
@@ -48,6 +49,17 @@ export default function Solucoes() {
             Oferecemos uma gama completa de soluções em estruturas temporárias, 
             todas projetadas com rigor técnico e foco na segurança.
           </p>
+        </div>
+
+        {/* Feature Banner */}
+        <div className="relative mb-16 aspect-[16/7] md:aspect-[21/7] overflow-hidden">
+          <Image
+            src="/images/visao-tecnica.png"
+            alt="Detalhe técnico de estrutura metálica modular evidenciando engenharia e precisão"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1280px) 100vw, 1280px"
+          />
         </div>
 
         {/* Grid */}

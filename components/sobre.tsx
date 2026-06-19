@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import SectionBackground from '@/components/section-background'
 import { siteBackgrounds } from '@/lib/site-backgrounds'
 
@@ -42,20 +43,29 @@ export default function Sobre() {
         </div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
-          {/* Left - Quote */}
-          <div className="border-l-2 border-frask-red pl-8">
-            <blockquote className="font-serif text-2xl md:text-3xl text-neutral-900 leading-relaxed mb-6">
-              &ldquo;Nosso diferencial vai além da estrutura — é a expertise, 
-              o atendimento e a confiança que oferecemos.&rdquo;
-            </blockquote>
-            <cite className="text-sm text-neutral-500 not-italic">
-              — Heron Bley Polatti, Fundador
-            </cite>
+        <div className="grid lg:grid-cols-2 gap-16 items-stretch mb-20">
+          {/* Left - Feature Image */}
+          <div className="relative min-h-[360px] lg:min-h-full overflow-hidden">
+            <Image
+              src="/images/confianca-grande-escala.png"
+              alt="Equipe técnica da Frask montando estrutura metálica de grande porte com segurança"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
 
-          {/* Right - Text */}
-          <div>
+          {/* Right - Quote + Text */}
+          <div className="flex flex-col justify-center">
+            <div className="border-l-2 border-frask-red pl-8 mb-10">
+              <blockquote className="font-serif text-2xl md:text-3xl text-neutral-900 leading-relaxed mb-6">
+                &ldquo;Nosso diferencial vai além da estrutura — é a expertise, 
+                o atendimento e a confiança que oferecemos.&rdquo;
+              </blockquote>
+              <cite className="text-sm text-neutral-500 not-italic">
+                — Heron Bley Polatti, Fundador
+              </cite>
+            </div>
             <p className="text-neutral-600 leading-relaxed mb-6">
               Tornamo-nos parceiros essenciais de produtores de eventos, agências de marketing 
               e órgãos governamentais — sempre fornecendo soluções adaptadas às demandas do 
