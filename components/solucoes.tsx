@@ -69,7 +69,7 @@ export default function Solucoes() {
           {solucoes.map((s, i) => (
             <div
               key={i}
-              className="bg-white/90 p-10 backdrop-blur-sm group hover:bg-white transition-colors border-t-2 border-t-transparent hover:border-t-frask-red"
+              className="bg-white p-10 group hover:bg-white transition-colors border-t-2 border-t-transparent hover:border-t-frask-red"
             >
               <span className="text-sm font-medium text-neutral-300 mb-6 block">
                 0{i + 1}
