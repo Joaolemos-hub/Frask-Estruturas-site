@@ -82,10 +82,10 @@ export default function Sobre() {
         </div>
 
         {/* Pilares */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border border-neutral-200">
           {pilares.map((p, i) => (
-            <div key={i} className="border-t border-neutral-200 pt-6 hover:border-t-frask-red transition-colors">
-              <span className="text-sm font-medium text-frask-red mb-4 block">
+            <div key={i} className="bg-white p-10 group hover:bg-white transition-colors border-r border-b border-neutral-200">
+              <span className="text-sm font-medium text-neutral-300 mb-6 block">
                 0{i + 1}
               </span>
               <h3 className="text-lg font-medium text-neutral-900 mb-3">
