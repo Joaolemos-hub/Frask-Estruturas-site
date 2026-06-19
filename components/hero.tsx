@@ -63,11 +63,12 @@ export default function Hero() {
           {/* Feature Image */}
           <div className="relative aspect-square overflow-hidden">
             <Image
-              src="/bg/palco-show-luzes.png"
-              alt="Palco de show com treliças, telões LED e iluminação de alta produção"
+              src="/images/tendas-hero.png"
+              alt="Vista aérea de complexo de tendas brancas montadas pela Frask para grande evento"
               fill
               className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
             />
           </div>
         </div>

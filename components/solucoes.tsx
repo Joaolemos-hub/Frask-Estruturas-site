@@ -54,10 +54,10 @@ export default function Solucoes() {
         {/* Feature Banner */}
         <div className="relative mb-16 aspect-video overflow-hidden rounded-lg">
           <Image
-            src="/images/visao-tecnica.png"
-            alt="Detalhe técnico de estrutura metálica modular evidenciando engenharia e precisão"
+            src="/images/tendas-banner.png"
+            alt="Tendas e coberturas modulares brancas iluminadas para evento corporativo ao entardecer"
             fill
-            className="object-cover object-left"
+            className="object-cover object-center"
             sizes="(max-width: 1280px) 100vw, 1280px"
           />
         </div>
