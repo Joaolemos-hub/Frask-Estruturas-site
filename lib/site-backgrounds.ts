@@ -29,7 +29,7 @@ export const siteBackgrounds = {
     src: '/bg/estrutura-trelica-metalica.png',
     alt: 'Estrutura metálica de treliças box truss para coberturas e eventos',
     overlay: 'cream',
-    imageOpacity: 10.22,
+    imageOpacity: 0.22,
     position: 'center',
   },
   projetos: {
@@ -43,7 +43,7 @@ export const siteBackgrounds = {
     src: '/bg/estrutura-trelica-metalica-contato.png',
     alt: 'Estrutura metálica de treliças box truss para coberturas e eventos',
     overlay: 'cream',
-    imageOpacity: 10.22,
+    imageOpacity: 0.22,
     position: 'center',
   },
 } satisfies Record<string, SiteBackgroundConfig>
