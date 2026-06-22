@@ -19,17 +19,17 @@ export const siteBackgrounds = {
     priority: true,
   },
   sobre: {
-    src: '/bg/estrutura-dois-andares.png',
-    alt: 'Estrutura metálica de dois andares iluminada para evento corporativo',
+    src: '/bg/estrutura-metalica-engenharia.png',
+    alt: 'Estrutura metálica com múltiplos andares para engenharia de eventos',
     overlay: 'light',
-    imageOpacity: 0.16,
-    position: 'center 35%',
+    imageOpacity: 0.22,
+    position: 'center',
   },
   solucoes: {
     src: '/bg/estrutura-trelica-metalica.png',
     alt: 'Estrutura metálica de treliças box truss para coberturas e eventos',
     overlay: 'cream',
-    imageOpacity: 0.22,
+    imageOpacity: 10.22,
     position: 'center',
   },
   projetos: {
@@ -43,7 +43,7 @@ export const siteBackgrounds = {
     src: '/bg/estrutura-trelica-metalica-contato.png',
     alt: 'Estrutura metálica de treliças box truss para coberturas e eventos',
     overlay: 'cream',
-    imageOpacity: 0.22,
+    imageOpacity: 10.22,
     position: 'center',
   },
 } satisfies Record<string, SiteBackgroundConfig>
