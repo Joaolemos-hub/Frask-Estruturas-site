@@ -26,10 +26,10 @@ export const siteBackgrounds = {
     position: 'center 35%',
   },
   solucoes: {
-    src: '/bg/tendas-aereo.png',
-    alt: 'Vista aérea de complexo de tendas para grandes eventos',
+    src: '/bg/estrutura-trelica-metalica.png',
+    alt: 'Estrutura metálica de treliças box truss para coberturas e eventos',
     overlay: 'cream',
-    imageOpacity: 0.2,
+    imageOpacity: 0.22,
     position: 'center',
   },
   projetos: {

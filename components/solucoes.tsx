@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import SectionBackground from '@/components/section-background'
 import GridPattern from '@/components/grid-pattern'
 import { siteBackgrounds } from '@/lib/site-backgrounds'
@@ -51,17 +50,6 @@ export default function Solucoes() {
             Oferecemos uma gama completa de soluções em estruturas temporárias, 
             todas projetadas com rigor técnico e foco na segurança.
           </p>
-        </div>
-
-        {/* Feature Banner */}
-        <div className="relative mb-16 aspect-video overflow-hidden rounded-lg">
-          <Image
-            src="/images/tendas-banner.png"
-            alt="Tendas e coberturas modulares brancas iluminadas para evento corporativo ao entardecer"
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 1280px) 100vw, 1280px"
-          />
         </div>
 
         {/* Grid */}
