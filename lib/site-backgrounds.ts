@@ -40,10 +40,10 @@ export const siteBackgrounds = {
     position: 'center 40%',
   },
   contato: {
-    src: '/bg/estrutura-dois-andares.png',
-    alt: 'Estrutura metálica de dois andares para eventos',
+    src: '/bg/estrutura-trelica-metalica-contato.png',
+    alt: 'Estrutura metálica de treliças box truss para coberturas e eventos',
     overlay: 'cream',
-    imageOpacity: 0.16,
-    position: '20% center',
+    imageOpacity: 0.22,
+    position: 'center',
   },
 } satisfies Record<string, SiteBackgroundConfig>
