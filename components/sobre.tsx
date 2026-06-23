@@ -47,7 +47,7 @@ export default function Sobre() {
         {/* Content Grid */}
         <div className="grid lg:grid-cols-2 gap-12 items-start mb-20">
           {/* Left - Feature Image */}
-          <div className="relative w-full overflow-hidden">
+          <div className="relative w-full overflow-hidden rounded-3xl border border-[#F1473F] shadow-sm">
             <Image
               src="/images/confianca-grande-escala.png"
               alt="Equipe técnica da Frask montando estrutura metálica de grande porte com segurança"
