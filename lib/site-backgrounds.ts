@@ -22,7 +22,7 @@ export const siteBackgrounds = {
     src: '/bg/estrutura-metalica-engenharia.png',
     alt: 'Arquibancadas metálicas modulares com escadas e guarda-corpos para eventos',
     overlay: 'light',
-    imageOpacity: 0.22,
+    imageOpacity: 0.35,
     position: 'center',
   },
   solucoes: {
