@@ -5,6 +5,18 @@ import GridPattern from '@/components/grid-pattern'
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-[#F5F5F0] overflow-hidden pb-24">
+      {/* Background Structure Image */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <Image
+          src="/images/estrutura-fundo.png"
+          alt=""
+          fill
+          className="object-cover object-center opacity-[0.22]"
+          sizes="100vw"
+          priority
+        />
+      </div>
+
       <div className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full bg-frask-red/10 blur-3xl" aria-hidden />
       <div className="pointer-events-none absolute bottom-32 -left-16 h-64 w-64 rounded-full bg-frask-gray/10 blur-3xl" aria-hidden />
 
