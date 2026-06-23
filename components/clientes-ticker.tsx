@@ -25,7 +25,7 @@ function MarqueeTrack({ duplicate = false }: { duplicate?: boolean }) {
 
 export default function ClientesTicker() {
   return (
-    <div className="mt-16 border-t border-white/10 pt-16">
+    <section className="bg-[#1a1a1a] py-20 md:py-24">
       <style>{`
         @keyframes clientes-marquee-scroll {
           from {
@@ -57,6 +57,6 @@ export default function ClientesTicker() {
           <MarqueeTrack duplicate />
         </div>
       </div>
-    </div>
+    </section>
   )
 }
