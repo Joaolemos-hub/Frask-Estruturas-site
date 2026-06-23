@@ -55,7 +55,7 @@ export default function Hero() {
           </div>
           
           {/* Feature Image */}
-          <div className="relative aspect-square overflow-hidden">
+          <div className="relative aspect-square overflow-hidden mt-12 lg:mt-20">
             <Image
               src="/images/tendas-hero.png"
               alt="Vista aérea de complexo de tendas brancas montadas pela Frask para grande evento"
