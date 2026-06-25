@@ -118,7 +118,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-xs text-neutral-500">
-              © 2025 Frask Estruturas. Todos os direitos reservados.
+              © 2026 Frask Estruturas. Todos os direitos reservados.
             </p>
 
             <p className="text-xs text-neutral-600 uppercase tracking-wider">

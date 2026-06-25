@@ -20,10 +20,10 @@ export const siteBackgrounds = {
   },
   sobre: {
     src: '/bg/estrutura-metalica-engenharia.png',
-    alt: 'Estrutura metálica com múltiplos andares para engenharia de eventos',
+    alt: 'Arquibancadas metálicas modulares com escadas e guarda-corpos para eventos',
     overlay: 'light',
-    imageOpacity: 0.22,
-    position: 'center',
+    imageOpacity: 0.35,
+    position: 'center bottom',
   },
   solucoes: {
     src: '/bg/estrutura-trelica-metalica.png',

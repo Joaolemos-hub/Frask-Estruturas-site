@@ -3,7 +3,7 @@ import type { SiteBackgroundConfig } from '@/lib/site-backgrounds'
 
 const overlayGradients = {
   light:
-    'bg-gradient-to-br from-white/97 via-white/94 to-white/90',
+    'bg-gradient-to-br from-white/85 via-white/80 to-white/75',
   cream:
     'bg-gradient-to-br from-[#F5F5F0]/97 via-[#F5F5F0]/94 to-[#F5F5F0]/88',
   dark:

@@ -3,7 +3,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import useEmblaCarousel from 'embla-carousel-react'
-import ClientesTicker from '@/components/clientes-ticker'
 
 const CARD_WIDTH = 350
 const CARD_GAP = 24
@@ -291,8 +290,6 @@ export default function MarcasCarrossel() {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </p>
-
-        <ClientesTicker />
       </div>
     </section>
   )
