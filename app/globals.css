@@ -4,8 +4,8 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --frask-red: #e2564e;
-  --frask-red-dark: #c9453e;
+  --frask-red: #F1473F;
+  --frask-red-dark: #c93a34;
   --frask-gray: #6e6e6e;
   --frask-gray-dark: #4a4a4a;
   --background: oklch(1 0 0);

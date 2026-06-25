@@ -1,25 +1,30 @@
+import Image from 'next/image'
 import Link from 'next/link'
+import GridPattern from '@/components/grid-pattern'
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-[#F5F5F0] overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-[#F5F5F0] overflow-hidden pb-24">
+      {/* Background Structure Image */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <Image
+          src="/images/estrutura-fundo.png"
+          alt=""
+          fill
+          className="object-cover object-center opacity-[0.22]"
+          sizes="100vw"
+          priority
+        />
+      </div>
+
       <div className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full bg-frask-red/10 blur-3xl" aria-hidden />
       <div className="pointer-events-none absolute bottom-32 -left-16 h-64 w-64 rounded-full bg-frask-gray/10 blur-3xl" aria-hidden />
 
       {/* Background Pattern - Subtle Grid */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #000 1px, transparent 1px),
-            linear-gradient(to bottom, #000 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px'
-        }}
-      />
+      <GridPattern />
       
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-20 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Text Content */}
           <div className="max-w-xl">
             <p className="text-sm font-medium tracking-[0.2em] text-frask-gray uppercase mb-6">
@@ -41,42 +46,44 @@ export default function Hero() {
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="#solicitacao"
-                className="inline-flex items-center justify-center px-8 py-4 bg-neutral-900 text-white text-sm font-medium tracking-wide hover:bg-neutral-800 transition-colors"
-              >
-                Solicitar Orçamento
-                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-              
-              <Link
                 href="#projetos"
-                className="inline-flex items-center justify-center px-8 py-4 border border-neutral-300 text-frask-gray-dark text-sm font-medium tracking-wide hover:border-frask-red hover:text-frask-red transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 bg-neutral-900 text-white text-sm font-medium tracking-wide hover:bg-neutral-800 transition-colors"
               >
                 Ver Projetos
               </Link>
             </div>
           </div>
           
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-6">
-            <div className="p-8 border border-neutral-200 border-t-frask-red border-t-2 bg-white">
-              <p className="font-serif text-5xl md:text-6xl font-medium text-frask-red mb-2">15+</p>
-              <p className="text-sm text-neutral-500 tracking-wide">Anos de Experiência</p>
-            </div>
-            <div className="p-8 border border-neutral-200 bg-white">
-              <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">500+</p>
-              <p className="text-sm text-neutral-500 tracking-wide">Projetos Realizados</p>
-            </div>
-            <div className="p-8 border border-neutral-200 bg-white">
-              <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">100%</p>
-              <p className="text-sm text-neutral-500 tracking-wide">Segurança Certificada</p>
-            </div>
-            <div className="p-8 border border-neutral-200 bg-white">
-              <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">24h</p>
-              <p className="text-sm text-neutral-500 tracking-wide">Suporte Técnico</p>
-            </div>
+          {/* Feature Image */}
+          <div className="relative aspect-square overflow-hidden mt-12 lg:mt-20 rounded-3xl border border-[#F1473F] shadow-sm">
+            <Image
+              src="/images/tendas-hero.png"
+              alt="Vista aérea de complexo de tendas brancas montadas pela Frask para grande evento"
+              fill
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+          </div>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="p-8 border border-neutral-200 bg-white">
+            <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">15+</p>
+            <p className="text-sm text-neutral-500 tracking-wide">Anos de Experiência</p>
+          </div>
+          <div className="p-8 border border-neutral-200 bg-white">
+            <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">500+</p>
+            <p className="text-sm text-neutral-500 tracking-wide">Projetos Realizados</p>
+          </div>
+          <div className="p-8 border border-neutral-200 bg-white">
+            <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">100%</p>
+            <p className="text-sm text-neutral-500 tracking-wide">Segurança Certificada</p>
+          </div>
+          <div className="p-8 border border-neutral-200 bg-white">
+            <p className="font-serif text-5xl md:text-6xl font-medium text-neutral-900 mb-2">24h</p>
+            <p className="text-sm text-neutral-500 tracking-wide">Suporte Técnico</p>
           </div>
         </div>
       </div>

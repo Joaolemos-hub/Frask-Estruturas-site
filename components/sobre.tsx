@@ -1,26 +1,38 @@
+import Image from 'next/image'
+import SectionBackground from '@/components/section-background'
+import GridPattern from '@/components/grid-pattern'
+import { siteBackgrounds } from '@/lib/site-backgrounds'
+import { ShieldCheck, FileCheck, Boxes, ClipboardCheck } from 'lucide-react'
+
 export default function Sobre() {
   const pilares = [
     {
+      icon: ShieldCheck,
       title: "Engenharia Certificada",
       desc: "Projetos assinados por engenheiro responsável, ART garantida em cada entrega.",
     },
     {
+      icon: FileCheck,
       title: "Normas Técnicas NBR",
       desc: "Conformidade total com as normas técnicas brasileiras — segurança que você pode comprovar.",
     },
     {
+      icon: Boxes,
       title: "Estruturas Próprias",
       desc: "Frota e estruturas próprias para controle total de qualidade, logística e cumprimento de prazo.",
     },
     {
+      icon: ClipboardCheck,
       title: "Gestão Completa",
       desc: "Da concepção à desmontagem, gerenciamos cada etapa. Você foca no evento; nós cuidamos do resto.",
     },
   ]
 
   return (
-    <section id="sobre" className="py-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="sobre" className="relative overflow-hidden bg-white py-32">
+      <SectionBackground {...siteBackgrounds.sobre} />
+      <GridPattern />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mb-20">
           <p className="text-sm font-medium tracking-[0.2em] text-frask-gray uppercase mb-4">
@@ -38,20 +50,30 @@ export default function Sobre() {
         </div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
-          {/* Left - Quote */}
-          <div className="border-l-2 border-frask-red pl-8">
-            <blockquote className="font-serif text-2xl md:text-3xl text-neutral-900 leading-relaxed mb-6">
-              &ldquo;Nosso diferencial vai além da estrutura — é a expertise, 
-              o atendimento e a confiança que oferecemos.&rdquo;
-            </blockquote>
-            <cite className="text-sm text-neutral-500 not-italic">
-              — Heron Bley Polatti, Fundador
-            </cite>
+        <div className="grid lg:grid-cols-2 gap-12 items-start mb-20">
+          {/* Left - Feature Image */}
+          <div className="relative w-full overflow-hidden rounded-3xl border border-[#F1473F] shadow-sm">
+            <Image
+              src="/images/confianca-grande-escala.png"
+              alt="Equipe técnica da Frask montando estrutura metálica de grande porte com segurança"
+              width={470}
+              height={568}
+              className="w-full h-auto"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
           </div>
 
-          {/* Right - Text */}
-          <div>
+          {/* Right - Quote + Text */}
+          <div className="pt-4">
+            <div className="border-l-2 border-frask-red pl-8 mb-10">
+              <blockquote className="font-serif text-2xl md:text-3xl text-neutral-900 leading-relaxed mb-6">
+                &ldquo;Nosso diferencial vai além da estrutura — é a expertise, 
+                o atendimento e a confiança que oferecemos.&rdquo;
+              </blockquote>
+              <cite className="text-sm text-neutral-500 not-italic">
+                — Heron Bley Polatti, Fundador
+              </cite>
+            </div>
             <p className="text-neutral-600 leading-relaxed mb-6">
               Tornamo-nos parceiros essenciais de produtores de eventos, agências de marketing 
               e órgãos governamentais — sempre fornecendo soluções adaptadas às demandas do 
@@ -65,20 +87,34 @@ export default function Sobre() {
         </div>
 
         {/* Pilares */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {pilares.map((p, i) => (
-            <div key={i} className="border-t border-neutral-200 pt-6 hover:border-t-frask-red transition-colors">
-              <span className="text-sm font-medium text-frask-red mb-4 block">
-                0{i + 1}
-              </span>
-              <h3 className="text-lg font-medium text-neutral-900 mb-3">
-                {p.title}
-              </h3>
-              <p className="text-sm text-neutral-600 leading-relaxed">
-                {p.desc}
-              </p>
-            </div>
-          ))}
+        <div className="grid md:grid-cols-2 gap-6">
+          {pilares.map((p, i) => {
+            const Icon = p.icon
+            return (
+              <div
+                key={i}
+                className="group bg-white border border-neutral-200 rounded-2xl p-8 lg:p-10 transition-all hover:border-frask-red/40 hover:shadow-md"
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <span className="font-serif text-5xl font-medium text-frask-red leading-none">
+                    0{i + 1}
+                  </span>
+                  <Icon
+                    className="h-8 w-8 text-frask-red transition-transform group-hover:scale-110"
+                    strokeWidth={1.5}
+                    aria-hidden
+                  />
+                </div>
+                <div className="h-px w-full bg-neutral-200 mb-6" />
+                <h3 className="text-xl font-medium text-neutral-900 mb-3">
+                  {p.title}
+                </h3>
+                <p className="text-base text-neutral-600 leading-relaxed">
+                  {p.desc}
+                </p>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

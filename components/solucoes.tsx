@@ -1,3 +1,7 @@
+import SectionBackground from '@/components/section-background'
+import GridPattern from '@/components/grid-pattern'
+import { siteBackgrounds } from '@/lib/site-backgrounds'
+
 const solucoes = [
   {
     title: "Palcos & Stages",
@@ -27,8 +31,10 @@ const solucoes = [
 
 export default function Solucoes() {
   return (
-    <section id="solucoes" className="py-32 bg-[#F5F5F0]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section id="solucoes" className="relative overflow-hidden bg-[#F5F5F0] py-32">
+      <SectionBackground {...siteBackgrounds.solucoes} />
+      <GridPattern />
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
           <div className="max-w-2xl">
@@ -47,11 +53,11 @@ export default function Solucoes() {
         </div>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-neutral-200">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-0 border border-neutral-200">
           {solucoes.map((s, i) => (
             <div
               key={i}
-              className="bg-white p-10 group hover:bg-neutral-50 transition-colors border-t-2 border-t-transparent hover:border-t-frask-red"
+              className="bg-white p-10 group hover:bg-white transition-colors border-r border-b border-neutral-200 border-t-2 border-t-transparent hover:border-t-frask-red"
             >
               <span className="text-sm font-medium text-neutral-300 mb-6 block">
                 0{i + 1}
